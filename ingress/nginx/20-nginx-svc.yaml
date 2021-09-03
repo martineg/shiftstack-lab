@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nginx
+  name: nginx
+  namespace: my-ripsaw
+spec:
+  ports:
+  - name: 8080-8080
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: nginx
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nginx-ssl
+  name: nginx-ssl
+  namespace: my-ripsaw
+spec:
+  ports:
+  - name: 8443-8443
+    port: 8443
+    protocol: TCP
+    targetPort: 8443
+  selector:
+    app: nginx
+  sessionAffinity: None
+  type: ClusterIP
