@@ -1,1 +1,0 @@
-GET https://nginx-ssl-edge-my-ripsaw.apps.shiftstack.ocp4-on-osp.lab.martineg.net/16384.html

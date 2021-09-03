@@ -1,0 +1,33 @@
+apiVersion: ripsaw.cloudbulldozer.io/v1alpha1
+kind: Benchmark
+metadata:
+  name: kube-burner-max-namespaces
+  namespace: my-ripsaw
+spec:
+  clustername: ocp4-osp
+  workload:
+    name: kube-burner
+    args:
+      workload: max-namespaces
+      job_timeout: 7200
+      default_index: ripsaw-kube-burner
+      job_iterations: 10
+      pin_server: {"node-role.kubernetes.io/worker": ""}
+      wait_when_finished: true
+      pod_wait: false
+      image: quay.io/cloud-bulldozer/kube-burner:latest
+      qps: 25
+      burst: 25
+      log_level: info
+      cleanup: true
+      verify_objects: true
+      error_on_verify: true
+      step: 30s
+      metrics_profile: metrics.yaml
+      tolerations:
+        - key: role
+          value: workload
+          effect: NoSchedule
+      node_selector:
+        key: node-role.kubernetes.io/worker
+        value:

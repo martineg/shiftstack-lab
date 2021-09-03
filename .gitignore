@@ -1,0 +1,4 @@
+# vegeta assets
+*.bin
+*.html
+targets.txt
