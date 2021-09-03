@@ -1,0 +1,14 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: data0
+  namespace: dev1
+spec:
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: standard-csi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  
